@@ -1,0 +1,70 @@
+Team: Radiants 
+Members: David Oganov, Mickey Girmai, Joshua Feng, Michael Le 
+Project: Grocery Management System 
+
+Business Problem: 
+Our grocery store operation is overstocking inventory and losing a lot of money. The current system orders manually input values (employee estimation). Over the last 6 months, sales have been down, and the store is headed for bankruptcy. We are not attaining many returning consumers, lowering sales trends. To compete with this, we will implement a sales tracking system to better adjust, maintain inventory and increase sales by marketing highly sold and profitable items. The problem we are attempting to solve is that we cannot keep track of high-profit items. 
+High-Level Interface:
+Interface: We will supply a GUI that will track how each item in the grocery store’s inventory is selling and what the differences in profit are for each item by a sort of ranking system.
+User Interactions:
+•	Sales trends (Sales system) 
+•	Defined by [Ranking Highest to lowest – items summed, auto-updated based on current inventory stock quantities]
+•	Different selectable periods of time
+•	Add, modify, and view promotions
+•	Search database for specific items
+•	Add inventory to database (if item exists in the catalog)
+
+API Design/User interface design:
+•	Search (Query)
+•	Allows customers to search from the Catalog where Inventory.StatusID is 1 (In Stock).
+	Upon finding catalog item, customers can view the price of the item and if it is in promotion or not.
+	Customers can also order said item.
+•	Management can do everything above and upon finding the catalog item they can view the trends.
+•	View sales trends (Query)
+•	View trends based on the time period the user selects. These time periods include a day.
+•	View profits per item.
+•	Legend for distinct colors for if sold during a promotion or not.
+•	View the top 10 items where there are the largest average uptrends and downtrends of profits over time.
+•	View and set promotions (Update)
+•	Add inventory (stock) to items that exist within the database (Insert)
+
+Development tools and Environment:
+•	Database Software (DBMS): Postgres
+•	UI tools: Apache NetBeans – Java 8
+•	We will implement a GUI using Java 8
+•	We will be implementing callable statements to SQL functions
+•	Database Hosting: Hosting a server on ElephantSQL --> login via Postgres using server name as user.
+•	Development tools: We will use NetBeans to set up a GitHub repository so that we can collaborate on the project.
+
+Description of User Interaction with GUI
+•	Application Launch Screen
+•	Users sign in by entering their email and last name.
+•	Employees:
+	Can view all tabs listed below
+•	Customers:
+	You can place orders, view inventory and active promotions using the search tab.
+•	Home Tab
+•	This is the home page of the GUI. It has an Edit Inventory, Edit Promotions, and View Trends button. Pressing the button changes the screen to its respective tab.
+•	Search Tab
+•	Customers can search the inventory database for specific items that are in stock.
+•	Columns SKU, name, description, weight, cost, and barcode of items are displayed to the Customer.
+•	The search button without any input displays all the current items in our inventory to view.
+•	Customers can select any item to view, which loads a screen displaying the name, description, weight, and cost of the item. The customers can also see if the item is in promotion or not and can input an order amount and press the ‘confirm’ button to add the item to cart, in the cart total price is viewable, and order may be placed.
+•	Employees can view and do everything above, as well as view the vendor price of items. 
+•	Promotions Tab
+•	Only viewable to employees.
+•	Employees will be able to add, modify, and view promotions for items in the inventory.
+•	All promotions ever created will be listed. You can also search for a specific promotion to view.
+•	Create button loads a screen to create a promotion. You input the promotion name, description, start date, end date, and discount amount.
+•	Apply button loads a screen to apply a promotion to an item. You select the promotion first, and then select an item in our inventory from the drop-down menu you want to apply that promotion to.
+•	Edit button loads a screen to edit the selected promotion. You can update any part of the promotion: name, description, start date, end date, and discount amount.
+•	Revert button loads a screen to remove the promotion from an item and reverts that item’s discounted price back to its original price. You select an item from the drop-down menu, which only has the items that have a selected promotion currently applied.
+•	Sales Trends Tab
+•	Only viewable to employees.
+•	Users will be able to view sales trends based on a ranking system, the top 10 profitable items and the top 10 least-profitable items, displayed in descending order for profitable items, and ascending for least-profitable items, based on sales volume and profit. 
+•	Users can select different time periods from a dropdown menu to view sales trends. This includes the day after the most recent order date, and periods adjustable in intervals of [1 day, 1 week, 2 weeks, 1 month, 2 months, 3 months]
+	View button – loads two tables depicting the top 10 profitable items and top 10 least-profitable items.
+•	Cart Tab
+•	A running total for all items in the cart is displayed to the customer.
+•	A table listing each item’s SKU, name, description, weight, cost, and barcode of items are displayed to the Customer.
+•	Place order button that updates the inventory stock, reset the cart, and insert OrderItem and COrder in the database. 
